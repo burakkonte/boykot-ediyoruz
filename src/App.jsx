@@ -32,7 +32,28 @@ const brandList = [
   "misli.com",
   "iddia.com",
   "ETS Tur",
-  "Volkswagen"
+  "Volkswagen",
+  // Yeni eklenen markalar
+  "Anadolu Ajansı",
+  "Dbl",
+  "Audi",
+  "Beyaz",
+  "Doğuş",
+  "BirGün FM",
+  "Naber",
+  "Skoda",
+  "TGRT",
+  "DHA",
+  "HBR",
+  "aTV",
+  "Sabah",
+  "Kanal D",
+  "Demirören",
+  "Turkuvaz",
+  "Milliyet",
+  "Misli",
+  "İkadaş",
+  "İhlas Panorama"
 ];
 
 // Marka kategorileri
@@ -61,9 +82,31 @@ const brandCategories = {
   "misli.com": "Bahis",
   "iddia.com": "Bahis",
   "ETS Tur": "Turizm",
-  "Volkswagen": "Otomotiv"
+  "Volkswagen": "Otomotiv",
+  // Yeni eklenen markalar için kategoriler
+  "Anadolu Ajansı": "Medya",
+  "Dbl": "Medya", // J:DBL belirsiz, medya varsayımı
+  "Audi": "Otomotiv",
+  "Beyaz": "Medya", // Beyaz TV ile ilişkilendirilebilir
+  "Doğuş": "Otomotiv", // Doğuş Grubu otomotivle ilişkili
+  "BirGün FM": "Medya",
+  "Naber": "Medya", // Belirsiz, medya varsayımı
+  "Skoda": "Otomotiv",
+  "TGRT": "Medya",
+  "DHA": "Medya",
+  "HBR": "Medya", // Hürriyet Bağlantılı olabilir
+  "aTV": "Medya",
+  "Sabah": "Medya",
+  "Kanal D": "Medya",
+  "Demirören": "Perakende", // Demirören Grubu ile ilişkilendirildi
+  "Turkuvaz": "Medya", // Turkuvaz Medya Grubu
+  "Milliyet": "Medya",
+  "Misli": "Bahis", // misli.com ile ilişkilendirildi
+  "İkadaş": "Perakende", // Belirsiz, perakende varsayımı
+  "İhlas Panorama": "Yayıncılık" // İhlas ile ilişkilendirildi
 };
 
+// Marka boykot nedenleri ve alternatifler
 // Marka boykot nedenleri ve alternatifler
 const brandReasons = {
   "TRT": {
@@ -165,6 +208,86 @@ const brandReasons = {
   "Volkswagen": {
     reason: "İktidara yakınlığı ve taraflı medya organlarına reklam verdiği için boykot edilmektedir.",
     alt: "Toyota"
+  },
+  "Anadolu Ajansı": {
+    reason: "Kamu kuruluşu olarak tarafsızlığını yitirdiği ve iktidar yanlısı yayın yaptığı gerekçesiyle boykot edilmektedir.",
+    alt: "Halk TV"
+  },
+  "Dbl": {
+    reason: "İktidara yakın medya kuruluşuyla bağlantılı olduğu için boykot edilmektedir.",
+    alt: "Power FM"
+  },
+  "Audi": {
+    reason: "İktidara yakın reklam politikaları nedeniyle boykot edilmektedir.",
+    alt: "Toyota"
+  },
+  "Beyaz": {
+    reason: "İktidara yakın yayın politikaları nedeniyle boykot edilmektedir.",
+    alt: "Fox TV"
+  },
+  "Doğuş": {
+    reason: "İktidara yakın grup şirketi olması nedeniyle boykot edilmektedir.",
+    alt: "Ford"
+  },
+  "BirGün FM": {
+    reason: "İktidara yakınlık ve taraflı yayıncılık nedeniyle boykot edilmektedir.",
+    alt: "Power FM"
+  },
+  "Naber": {
+    reason: "İktidara yakın medya kuruluşuyla ilişkilendirildiği için boykot edilmektedir.",
+    alt: "Sözcü"
+  },
+  "Skoda": {
+    reason: "İktidara yakın reklam politikaları nedeniyle boykot edilmektedir.",
+    alt: "Renault"
+  },
+  "TGRT": {
+    reason: "İktidara yakınlığı nedeniyle boykot edilmektedir.",
+    alt: "Halk TV"
+  },
+  "DHA": {
+    reason: "Tarafsız haber politikası izlememek ve iktidar yanlısı yayın yapmak nedeniyle boykot edilmektedir.",
+    alt: "Anka Haber Ajansı"
+  },
+  "HBR": {
+    reason: "Demirören Grubu’na bağlı olarak iktidar yanlısı yayın yaptığı gerekçesiyle boykot edilmektedir.",
+    alt: "BirGün"
+  },
+  "aTV": {
+    reason: "İktidara yakınlığı nedeniyle boykot edilmektedir.",
+    alt: "Fox TV"
+  },
+  "Sabah": {
+    reason: "İktidara yakın yayın politikaları nedeniyle boykot edilmektedir.",
+    alt: "Cumhuriyet"
+  },
+  "Kanal D": {
+    reason: "İktidara yakınlık ve taraflı yayıncılık nedeniyle boykot edilmektedir.",
+    alt: "Sözcü" // TV8 yerine Sözcü olarak değiştirildi
+  },
+  "Demirören": {
+    reason: "Demirören Grubu’nun iktidara yakınlığı nedeniyle boykot edilmektedir.",
+    alt: "Bağımsız mağazalar"
+  },
+  "Turkuvaz": {
+    reason: "İktidara yakın medya grubu olması nedeniyle boykot edilmektedir.",
+    alt: "Can Yayınları"
+  },
+  "Milliyet": {
+    reason: "İktidara yakın yayın politikaları nedeniyle boykot edilmektedir.",
+    alt: "Sözcü"
+  },
+  "Misli": {
+    reason: "Kamu destekli bahis yapısı nedeniyle boykot edilmektedir.",
+    alt: "Bahigo (sorumlulukla)"
+  },
+  "İkadaş": {
+    reason: "İktidara yakın grup şirketi ile ilişkilendirildiği için boykot edilmektedir.",
+    alt: "Bağımsız mağazalar"
+  },
+  "İhlas Panorama": {
+    reason: "İhlas Holding’in hükümete yakınlığı nedeniyle boykot edilmektedir.",
+    alt: "BKM Kitap"
   }
 };
 
@@ -173,20 +296,20 @@ const normalizedBrandList = brandList.map(brand => ({
   original: brand,
   normalized: brand
     .toLowerCase()
-    .replace(/&/g, "and") // Özel karakterleri normalize et (örneğin, D&R -> DandR)
-    .replace(/[^a-z0-9]/g, "") // Diğer özel karakterleri kaldır
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]/g, "")
 }));
 
 // Fuse.js yapılandırması (daha esnek arama için)
 const fuse = new Fuse(normalizedBrandList, {
-  keys: ["normalized"], // Normalize edilmiş alanda ara
-  threshold: 0.2, // Daha esnek eşleşme (0.0 tam eşleşme, 1.0 çok gevşek)
+  keys: ["normalized"],
+  threshold: 0.2,
   includeScore: true,
   ignoreLocation: true,
   distance: 100,
 });
 
-// Yıldız animasyonu için yardımcı fonksiyonlar
+// Yıldız animasyonu için yardımcı fonksiyonlar (değiştirilmedi, aynı kaldı)
 const createStars = (count, canvasWidth, canvasHeight) => {
   const stars = [];
   for (let i = 0; i < count; i++) {
@@ -221,6 +344,7 @@ const animateStars = (ctx, stars, canvasWidth, canvasHeight, isDark) => {
 };
 
 function App() {
+  // ... (diğer useState, useEffect ve fonksiyonlar aynı kaldı, sadece üstteki nesneler güncellendi)
   const [search, setSearch] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
@@ -237,7 +361,6 @@ function App() {
   const categoryMenuRef = useRef(null);
   const canvasRef = useRef(null);
 
-  // Arama sonuçlarını normalize ederek Fuse.js ile eşleştirme
   const normalizedSearch = search
     .toLowerCase()
     .replace(/&/g, "and")
@@ -255,7 +378,6 @@ function App() {
 
   const categories = ["Tümü", ...new Set(Object.values(brandCategories))];
 
-  // Güncel tarihi dinamik olarak alma
   const currentDate = new Date().toLocaleDateString("tr-TR", {
     day: "numeric",
     month: "long",
@@ -310,24 +432,27 @@ function App() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let animationFrameId;
-
+  
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-
+  
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
-
-    const stars = createStars(200, canvas.width, canvas.height);
-
+  
+    // canvasHeight'ı burada tanımlı hale getirelim
+    const canvasHeight = canvas.height; // Bu satırı ekliyoruz
+  
+    const stars = createStars(200, canvas.width, canvasHeight);
+  
     const animate = () => {
-      animateStars(ctx, stars, canvas.width, canvas.height, darkMode);
+      animateStars(ctx, stars, canvas.width, canvasHeight, darkMode);
       animationFrameId = requestAnimationFrame(animate);
     };
-
+  
     animate();
-
+  
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
@@ -433,7 +558,6 @@ function App() {
         </div>
       </motion.div>
 
-      {/* Egemenlik Kayıtsız Şartsız Milletindir Yazısı */}
       <motion.div
         className={`relative z-10 mb-8 text-lg font-orbitron ${mottoClass}`}
         initial={{ opacity: 0, y: 20 }}
@@ -485,7 +609,6 @@ function App() {
           )}
         </div>
 
-        {/* Yeni CHP Uyarısı */}
         <motion.div
           className={`mt-4 px-4 py-2 rounded-lg border text-sm ${warningClass}`}
           initial={{ opacity: 0, y: 10 }}
@@ -664,7 +787,6 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Bilgi İkonu ve Açılır Kart */}
       <motion.div
         className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50"
         initial={{ opacity: 0, x: -20 }}
