@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import WebFont from "webfontloader";
 
 // Marka listesi (sadece CHP’nin boykot çağrısı yaptığı markalar)
+
+// Marka listesi (İhlas Haber Ajansı eklendi)
 const brandList = [
   "TRT",
   "CNN Türk",
@@ -53,10 +55,11 @@ const brandList = [
   "Milliyet",
   "Misli",
   "İkadaş",
-  "İhlas Panorama"
+  "İhlas Panorama",
+  "İhlas Haber Ajansı" // Yeni eklenen marka
 ];
 
-// Marka kategorileri
+// Marka kategorileri (İhlas Haber Ajansı eklendi)
 const brandCategories = {
   "TRT": "Medya",
   "CNN Türk": "Medya",
@@ -85,29 +88,29 @@ const brandCategories = {
   "Volkswagen": "Otomotiv",
   // Yeni eklenen markalar için kategoriler
   "Anadolu Ajansı": "Medya",
-  "Dbl": "Medya", // J:DBL belirsiz, medya varsayımı
+  "Dbl": "Medya",
   "Audi": "Otomotiv",
-  "Beyaz": "Medya", // Beyaz TV ile ilişkilendirilebilir
-  "Doğuş": "Otomotiv", // Doğuş Grubu otomotivle ilişkili
+  "Beyaz": "Medya",
+  "Doğuş": "Otomotiv",
   "BirGün FM": "Medya",
-  "Naber": "Medya", // Belirsiz, medya varsayımı
+  "Naber": "Medya",
   "Skoda": "Otomotiv",
   "TGRT": "Medya",
   "DHA": "Medya",
-  "HBR": "Medya", // Hürriyet Bağlantılı olabilir
+  "HBR": "Medya",
   "aTV": "Medya",
   "Sabah": "Medya",
   "Kanal D": "Medya",
-  "Demirören": "Perakende", // Demirören Grubu ile ilişkilendirildi
-  "Turkuvaz": "Medya", // Turkuvaz Medya Grubu
+  "Demirören": "Perakende",
+  "Turkuvaz": "Medya",
   "Milliyet": "Medya",
-  "Misli": "Bahis", // misli.com ile ilişkilendirildi
-  "İkadaş": "Perakende", // Belirsiz, perakende varsayımı
-  "İhlas Panorama": "Yayıncılık" // İhlas ile ilişkilendirildi
+  "Misli": "Bahis",
+  "İkadaş": "Perakende",
+  "İhlas Panorama": "Yayıncılık",
+  "İhlas Haber Ajansı": "Medya" // Yeni eklenen marka
 };
 
-// Marka boykot nedenleri ve alternatifler
-// Marka boykot nedenleri ve alternatifler
+// Marka boykot nedenleri ve alternatifler (İhlas Haber Ajansı eklendi)
 const brandReasons = {
   "TRT": {
     reason: "Kamu yayıncılığı tarafsızlığını yitirdiği için boykot edilmektedir.",
@@ -263,7 +266,7 @@ const brandReasons = {
   },
   "Kanal D": {
     reason: "İktidara yakınlık ve taraflı yayıncılık nedeniyle boykot edilmektedir.",
-    alt: "Sözcü" // TV8 yerine Sözcü olarak değiştirildi
+    alt: "Sözcü"
   },
   "Demirören": {
     reason: "Demirören Grubu’nun iktidara yakınlığı nedeniyle boykot edilmektedir.",
@@ -288,10 +291,14 @@ const brandReasons = {
   "İhlas Panorama": {
     reason: "İhlas Holding’in hükümete yakınlığı nedeniyle boykot edilmektedir.",
     alt: "BKM Kitap"
+  },
+  "İhlas Haber Ajansı": {
+    reason: "İhlas Holding’in iktidara yakınlığı ve tarafsızlıktan uzak haber politikaları nedeniyle boykot edilmektedir.",
+    alt: "Anka Haber Ajansı" // Alternatif olarak tarafsız bir haber ajansı önerildi
   }
 };
 
-// Arama için normalize edilmiş marka listesi oluşturma
+// Arama için normalize edilmiş marka listesi oluşturma (İhlas Haber Ajansı eklendi)
 const normalizedBrandList = brandList.map(brand => ({
   original: brand,
   normalized: brand
@@ -299,6 +306,8 @@ const normalizedBrandList = brandList.map(brand => ({
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]/g, "")
 }));
+
+// Diğer kısımlar aynen kalıyor (Fuse.js yapılandırması, App fonksiyonu ve geri kalan kod)
 
 // Fuse.js yapılandırması (daha esnek arama için)
 const fuse = new Fuse(normalizedBrandList, {
@@ -309,7 +318,7 @@ const fuse = new Fuse(normalizedBrandList, {
   distance: 100,
 });
 
-// Yıldız animasyonu için yardımcı fonksiyonlar (değiştirilmedi, aynı kaldı)
+// Yıldız animasyonu için yardımcı fonksiyonlar
 const createStars = (count, canvasWidth, canvasHeight) => {
   const stars = [];
   for (let i = 0; i < count; i++) {
@@ -344,7 +353,6 @@ const animateStars = (ctx, stars, canvasWidth, canvasHeight, isDark) => {
 };
 
 function App() {
-  // ... (diğer useState, useEffect ve fonksiyonlar aynı kaldı, sadece üstteki nesneler güncellendi)
   const [search, setSearch] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
@@ -432,27 +440,26 @@ function App() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let animationFrameId;
-  
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-  
+
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
-  
-    // canvasHeight'ı burada tanımlı hale getirelim
-    const canvasHeight = canvas.height; // Bu satırı ekliyoruz
-  
+
+    const canvasHeight = canvas.height; // Tanımlama eklendi
+
     const stars = createStars(200, canvas.width, canvasHeight);
-  
+
     const animate = () => {
       animateStars(ctx, stars, canvas.width, canvasHeight, darkMode);
       animationFrameId = requestAnimationFrame(animate);
     };
-  
+
     animate();
-  
+
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
@@ -526,7 +533,7 @@ function App() {
   };
 
   return (
-    <div className={`relative min-h-screen ${bgClass} flex flex-col items-center px-4 sm:px-6 text-center transition-all duration-500 font-exo-2`}>
+    <div className={`relative min-h-screen ${bgClass} flex flex-col items-center px-2 sm:px-4 md:px-6 text-center transition-all duration-500 font-exo-2`}>
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full z-0"
@@ -535,31 +542,31 @@ function App() {
 
       <motion.button
         onClick={() => setDarkMode(!darkMode)}
-        className={`absolute top-4 right-4 sm:top-6 sm:right-6 z-10 px-5 py-2 rounded-lg border text-sm font-medium transition-all duration-300 shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass}`}
+        className={`absolute top-2 right-2 sm:top-4 sm:right-4 md:top-6 md:right-6 z-10 px-3 py-1 sm:px-5 sm:py-2 md:px-5 md:py-2 rounded-lg border text-xs sm:text-sm md:text-sm font-medium transition-all duration-300 shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass}`} // Mobil için küçültüldü
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         {isDark ? "Açık Tema" : "Koyu Tema"}
       </motion.button>
 
-      <div className="pt-32 sm:pt-40" />
+      <div className="pt-16 sm:pt-32 md:pt-40" /> {/* Mobil için başlık üstü boşluk azaldı */}
 
       <motion.div
-        className="relative z-10 mb-4 flex items-center justify-center gap-4"
+        className="relative z-10 mb-2 sm:mb-4 md:mb-4 flex items-center justify-center gap-2 sm:gap-4 md:gap-4"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <svg className="w-10 h-10 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 sm:w-10 md:w-10 h-6 sm:h-10 md:h-10 text-red-500" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2v-2zm0-12h2v10h-2V5z" />
         </svg>
-        <div className={`text-4xl sm:text-5xl font-bold tracking-wide ${headingClass} font-orbitron`}>
+        <div className={`text-2xl sm:text-4xl md:text-5xl font-bold tracking-wide ${headingClass} font-orbitron`}>
           Boykot Ediyoruz
         </div>
       </motion.div>
 
       <motion.div
-        className={`relative z-10 mb-8 text-lg font-orbitron ${mottoClass}`}
+        className={`relative z-10 mb-2 sm:mb-8 md:mb-8 text-sm sm:text-lg md:text-lg font-orbitron ${mottoClass}`} // Mobil için küçültüldü
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -567,13 +574,13 @@ function App() {
         Egemenlik Kayıtsız Şartsız Milletindir
       </motion.div>
 
-      <div className="relative z-10 w-full max-w-xl sm:max-w-2xl" ref={searchRef}>
+      <div className="relative z-10 w-full max-w-xs sm:max-w-xl md:max-w-2xl" ref={searchRef}>
         <div className="relative">
-          <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-500" />
+          <Search className="absolute left-3 sm:left-5 top-1/2 transform -translate-y-1/2 w-5 sm:w-6 md:w-6 h-5 sm:h-6 md:h-6 text-gray-500" />
           <motion.input
             type="text"
             placeholder={placeholder}
-            className={`w-full pl-14 pr-6 py-4 rounded-2xl shadow-lg border transition-all duration-300 ease-in-out outline-none ring-0 ${isFocused ? inputFocusClass : inputClass}`}
+            className={`w-full pl-10 sm:pl-14 pr-6 sm:pr-6 py-2 sm:py-4 md:py-4 rounded-2xl shadow-lg border transition-all duration-300 ease-in-out outline-none ring-0 ${isFocused ? inputFocusClass : inputClass}`} // Mobil için padding ve yuvarlaklık ayarlandı
             value={search}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
@@ -583,7 +590,7 @@ function App() {
           />
           {isFocused && suggestions.length > 0 && (
             <motion.div
-              className={`absolute z-30 mt-1 w-full max-h-40 overflow-y-auto rounded-xl ${resultBoxClass} scrollbar-thin ${scrollbarClass}`}
+              className={`absolute z-30 mt-1 sm:mt-1 w-full max-h-32 sm:max-h-40 md:max-h-40 overflow-y-auto rounded-xl ${resultBoxClass} scrollbar-thin ${scrollbarClass}`} // Mobil için max-height ayarlandı
               style={{ top: "100%" }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -593,7 +600,7 @@ function App() {
               {suggestions.map((suggestion, index) => (
                 <motion.div
                   key={suggestion}
-                  className={`px-5 py-3 text-left cursor-pointer ${hoverClass}`}
+                  className={`px-3 sm:px-5 md:px-5 py-2 sm:py-3 md:py-3 text-left cursor-pointer ${hoverClass}`}
                   onMouseDown={() => {
                     setSearch(suggestion);
                     setIsFocused(false);
@@ -610,7 +617,7 @@ function App() {
         </div>
 
         <motion.div
-          className={`mt-4 px-4 py-2 rounded-lg border text-sm ${warningClass}`}
+          className={`mt-2 sm:mt-4 md:mt-4 px-2 sm:px-4 md:px-4 py-1 sm:py-2 md:py-2 rounded-lg border text-xs sm:text-sm md:text-sm ${warningClass}`} // Mobil için küçültüldü
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -618,20 +625,20 @@ function App() {
           Bu liste, Cumhuriyet Halk Partisi (CHP) ve Genel Başkan Özgür Özel'in açıklamaları doğrultusunda hazırlanmıştır. Liste zamanla güncellenebilir ve yeni gelişmelere göre değişiklik gösterebilir.
         </motion.div>
 
-        <div className="relative mt-4" ref={categoryMenuRef}>
+        <div className="relative mt-2 sm:mt-4 md:mt-4" ref={categoryMenuRef}>
           <motion.button
             onClick={() => setIsCategoryMenuOpen(!isCategoryMenuOpen)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-md ${categoryButtonClass}`}
+            className={`flex items-center gap-1 sm:gap-2 md:gap-2 px-2 sm:px-4 md:px-4 py-1 sm:py-2 md:py-2 rounded-lg text-xs sm:text-sm md:text-sm font-medium transition-all duration-300 shadow-md ${categoryButtonClass}`} // Mobil için küçültüldü
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {selectedCategory}
-            <ChevronDown className={`w-5 h-5 transform transition-transform ${isCategoryMenuOpen ? "rotate-180" : ""}`} />
+            <ChevronDown className={`w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5 transform transition-transform ${isCategoryMenuOpen ? "rotate-180" : ""}`} />
           </motion.button>
           <AnimatePresence>
             {isCategoryMenuOpen && (
               <motion.div
-                className={`absolute z-30 mt-2 w-48 rounded-xl border shadow-lg ${categoryMenuClass}`}
+                className={`absolute z-30 mt-1 sm:mt-2 md:mt-2 w-32 sm:w-48 md:w-48 rounded-xl border shadow-lg ${categoryMenuClass}`} // Mobil için width ayarlandı
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -644,7 +651,7 @@ function App() {
                       setSelectedCategory(category);
                       setIsCategoryMenuOpen(false);
                     }}
-                    className={`px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${
+                    className={`px-2 sm:px-4 md:px-4 py-1 sm:py-2 md:py-2 text-xs sm:text-sm md:text-sm cursor-pointer transition-all duration-200 ${
                       selectedCategory === category ? activeCategoryItemClass : categoryItemClass
                     }`}
                     whileHover={{ scale: 1.02 }}
@@ -658,7 +665,7 @@ function App() {
         </div>
 
         <motion.div
-          className={`relative z-20 mt-8 w-full max-h-96 overflow-y-auto rounded-xl ${resultBoxClass} scrollbar-thin ${scrollbarClass}`}
+          className={`relative z-20 mt-4 sm:mt-8 md:mt-8 w-full max-h-60 sm:max-h-96 md:max-h-96 overflow-y-auto rounded-xl ${resultBoxClass} scrollbar-thin ${scrollbarClass}`} // Mobil için max-height ayarlandı
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -673,29 +680,29 @@ function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`m-4 px-6 py-5 rounded-xl shadow-sm ${hoverClass} transition-all duration-300 focus:outline-none ring-0 ${
+                  className={`m-2 sm:m-4 md:m-4 px-3 sm:px-6 md:px-6 py-2 sm:py-5 md:py-5 rounded-xl shadow-sm ${hoverClass} transition-all duration-300 focus:outline-none ring-0 ${
                     selectedBrand === brand ? `border-2 ${selectedCardBorderClass}` : ""
                   }`}
                 >
-                  <div className="flex justify-between items-center mb-3">
-                    <div className="flex items-center gap-3">
-                      <span className="font-semibold text-lg">{brand}</span>
-                      <span className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full">
+                  <div className="flex justify-between items-center mb-1 sm:mb-3 md:mb-3">
+                    <div className="flex items-center gap-1 sm:gap-3 md:gap-3">
+                      <span className="font-semibold text-sm sm:text-lg md:text-lg">{brand}</span>
+                      <span className="text-xs sm:text-xs md:text-xs px-1 sm:px-2 md:px-2 py-0.5 sm:py-1 md:py-1 bg-blue-500/20 text-blue-400 rounded-full">
                         {brandCategories[brand]}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <XCircle className="w-5 h-5 text-red-500" />
-                      <span className="text-red-500 font-medium text-sm">Boykot listesinde</span>
+                    <div className="flex items-center gap-1 sm:gap-2 md:gap-2">
+                      <XCircle className="w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5 text-red-500" />
+                      <span className="text-red-500 font-medium text-xs sm:text-sm md:text-sm">Boykot listesinde</span>
                     </div>
                   </div>
-                  <p className={`text-sm ${descriptionClass} leading-relaxed`}>
+                  <p className={`text-xs sm:text-sm md:text-sm ${descriptionClass} leading-relaxed`}>
                     <strong>Neden:</strong> {brandReasons[brand]?.reason || "Belirtilmemiş"}
                   </p>
-                  <p className={`text-sm ${descriptionClass} leading-relaxed mt-1`}>
+                  <p className={`text-xs sm:text-sm md:text-sm ${descriptionClass} leading-relaxed mt-0.5 sm:mt-1 md:mt-1`}>
                     <strong>Alternatif:</strong>{" "}
                     <motion.span
-                      className={`inline-block px-3 py-1 ${altBackgroundClass} rounded-full text-sm font-medium`}
+                      className={`inline-block px-2 sm:px-3 md:px-3 py-0.5 sm:py-1 md:py-1 ${altBackgroundClass} rounded-full text-xs sm:text-sm md:text-sm font-medium`}
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -711,11 +718,11 @@ function App() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.4 }}
-                className="px-6 py-5 text-gray-500 flex justify-between items-center"
+                className="px-3 sm:px-6 md:px-6 py-2 sm:py-5 md:py-5 text-gray-500 flex justify-between items-center"
               >
-                <span>{search || "Sonuç bulunamadı"}</span>
-                <span className="flex items-center gap-2 text-green-500">
-                  <CheckCircle className="w-5 h-5" />
+                <span className="text-xs sm:text-sm md:text-sm">{search || "Sonuç bulunamadı"}</span>
+                <span className="flex items-center gap-1 sm:gap-2 md:gap-2 text-green-500">
+                  <CheckCircle className="w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5" />
                   Boykot listesinde değil
                 </span>
               </motion.div>
@@ -725,18 +732,18 @@ function App() {
       </div>
 
       <motion.div
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40"
+        className="fixed right-2 sm:right-6 md:right-6 top-1/2 transform -translate-y-1/2 z-40"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <motion.button
           onClick={() => setShowFeedback(true)}
-          className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300 shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass} flex items-center gap-2`}
+          className={`px-2 sm:px-4 md:px-4 py-1 sm:py-2 md:py-2 rounded-lg border text-xs sm:text-sm md:text-sm font-medium transition-all duration-300 shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass} flex items-center gap-1 sm:gap-2 md:gap-2`} // Mobil için küçültüldü
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <MessageSquare className="w-5 h-5" />
+          <MessageSquare className="w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5" />
           Geri Bildirim
         </motion.button>
       </motion.div>
@@ -754,28 +761,28 @@ function App() {
             />
             <motion.div
               ref={feedbackRef}
-              className={`fixed right-0 top-1/2 transform -translate-y-1/2 w-80 p-6 rounded-l-xl shadow-lg z-50 ${feedbackClass}`}
+              className={`fixed right-0 top-1/2 transform -translate-y-1/2 w-11/12 sm:w-80 md:w-80 p-3 sm:p-6 md:p-6 rounded-l-xl shadow-lg z-50 ${feedbackClass}`} // Mobil için genişlik ayarlandı
               initial={{ x: 300 }}
               animate={{ x: 0 }}
               exit={{ x: 300 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Geri Bildirim</h3>
+              <div className="flex justify-between items-center mb-2 sm:mb-4 md:mb-4">
+                <h3 className="text-sm sm:text-lg md:text-lg font-semibold">Geri Bildirim</h3>
                 <button onClick={() => setShowFeedback(false)}>
-                  <X className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+                  <X className="w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5 text-gray-500 hover:text-gray-700" />
                 </button>
               </div>
               <form onSubmit={handleFeedbackSubmit}>
                 <textarea
-                  className={`w-full h-32 p-3 rounded-lg border ${isDark ? "bg-[#2a2a2a] text-gray-100 border-gray-600" : "bg-gray-100 text-gray-800 border-gray-300"} outline-none resize-none`}
+                  className={`w-full h-24 sm:h-32 md:h-32 p-2 sm:p-3 md:p-3 rounded-lg border ${isDark ? "bg-[#2a2a2a] text-gray-100 border-gray-600" : "bg-gray-100 text-gray-800 border-gray-300"} outline-none resize-none text-sm sm:text-base md:text-base`} // Mobil için küçültüldü
                   placeholder="Görüşlerinizi yazın..."
                   value={feedbackText}
                   onChange={(e) => setFeedbackText(e.target.value)}
                 />
                 <motion.button
                   type="submit"
-                  className={`mt-4 w-full px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${buttonClass}`}
+                  className={`mt-2 sm:mt-4 md:mt-4 w-full px-2 sm:px-4 md:px-4 py-1 sm:py-2 md:py-2 rounded-lg text-xs sm:text-sm md:text-sm font-medium transition-all duration-300 ${buttonClass}`} // Mobil için küçültüldü
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -788,40 +795,40 @@ function App() {
       </AnimatePresence>
 
       <motion.div
-        className="fixed left-6 top-1/2 transform -translate-y-1/2 z-50"
+        className="fixed left-2 sm:left-6 md:left-6 top-1/2 transform -translate-y-1/2 z-50"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <motion.button
           onClick={() => setShowInfoCard(!showInfoCard)}
-          className={`p-3 rounded-full shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass}`}
+          className={`p-2 sm:p-3 md:p-3 rounded-full shadow-md bg-opacity-50 backdrop-blur-md ${buttonClass}`} // Mobil için küçültüldü
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <Info className={`w-6 h-6 ${infoIconClass}`} />
+          <Info className={`w-4 sm:w-6 md:w-6 h-4 sm:h-6 md:h-6 ${infoIconClass}`} />
         </motion.button>
       </motion.div>
 
       <AnimatePresence>
         {showInfoCard && (
           <motion.div
-            className={`fixed left-6 top-1/2 transform -translate-y-1/2 z-50 w-80 p-6 rounded-xl shadow-lg ${warningCardClass}`}
+            className={`fixed left-2 sm:left-6 md:left-6 top-1/2 transform -translate-y-1/2 z-50 w-11/12 sm:w-80 md:w-80 p-3 sm:p-6 md:p-6 rounded-xl shadow-lg ${warningCardClass}`} // Mobil için genişlik ayarlandı
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg font-semibold font-orbitron">Bilgilendirme</h3>
+            <div className="flex justify-between items-center mb-2 sm:mb-3 md:mb-3">
+              <h3 className="text-sm sm:text-lg md:text-lg font-semibold font-orbitron">Bilgilendirme</h3>
               <button onClick={() => setShowInfoCard(false)}>
-                <X className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+                <X className="w-4 sm:w-5 md:w-5 h-4 sm:h-5 md:h-5 text-gray-500 hover:text-gray-700" />
               </button>
             </div>
-            <p className="text-sm leading-relaxed mb-2">
+            <p className="text-xs sm:text-sm md:text-sm leading-relaxed mb-1 sm:mb-2 md:mb-2">
               Bu liste, Cumhuriyet Halk Partisi (CHP) ve Genel Başkan Özgür Özel'in açıklamaları doğrultusunda hazırlanmıştır. Liste zamanla güncellenebilir ve yeni gelişmelere göre değişiklik gösterebilir.
             </p>
-            <p className="text-sm leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-sm leading-relaxed">
               Boykot hakkı, Türkiye Cumhuriyeti Anayasası’nın{" "}
               <a
                 href="https://www.tbmm.gov.tr/anayasa/anayasa_1982.pdf"
@@ -837,11 +844,11 @@ function App() {
         )}
       </AnimatePresence>
 
-      <footer className={`relative z-10 mt-12 py-6 ${footerClass}`}>
-        <p className="text-sm">
+      <footer className={`relative z-10 mt-4 sm:mt-12 md:mt-12 py-2 sm:py-6 md:py-6 ${footerClass}`}>
+        <p className="text-xs sm:text-sm md:text-sm">
           © 2025 Boykot Ediyoruz. Tüm hakları saklıdır.
         </p>
-        <p className="text-sm mt-2">
+        <p className="text-xs sm:text-sm md:text-sm mt-1 sm:mt-2 md:mt-2">
           Son Güncelleme: {currentDate}
         </p>
       </footer>
