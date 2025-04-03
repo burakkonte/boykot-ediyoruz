@@ -1,0 +1,410 @@
+[
+  {
+    "name": "Nusr-Et",
+    "reason": "Doğuş Grubu restoranları arasında yer alması nedeniyle boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "KasapDöner",
+    "tags": [
+      "nusr-et",
+      "nusret",
+      "saltbae",
+      "salt bae"
+    ]
+  },
+  {
+    "name": "Zuma",
+    "reason": "Doğuş Grubu’na ait olması nedeniyle CHP tarafından boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "Local fine dining",
+    "tags": [
+      "zuma"
+    ]
+  },
+  {
+    "name": "Günaydın",
+    "reason": "Doğuş Grubu bünyesinde yer aldığı için boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "Kasap Burger",
+    "tags": [
+      "günaydın"
+    ]
+  },
+  {
+    "name": "Da Mario",
+    "reason": "CHP tarafından açıklanan boykot listesinde Doğuş Grubu restoranı olarak geçmektedir.",
+    "category": "restoran",
+    "alternative": "Big Chefs",
+    "tags": [
+      "da mario",
+      "damario"
+    ]
+  },
+  {
+    "name": "29",
+    "reason": "Doğuş Grubu bünyesinde yer aldığı için boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "Sunset Grill",
+    "tags": [
+      "29"
+    ]
+  },
+  {
+    "name": "Rüya",
+    "reason": "CHP tarafından boykot edilen Doğuş Grubu restoranıdır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "rüya"
+    ]
+  },
+  {
+    "name": "The Populist",
+    "reason": "Doğuş Grubu'na bağlı olduğu için boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "the populist",
+      "thepopulist"
+    ]
+  },
+  {
+    "name": "Lacivert",
+    "reason": "Doğuş Grubu kapsamında boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "lacivert"
+    ]
+  },
+  {
+    "name": "Masa",
+    "reason": "CHP tarafından açıklanan boykot listesinde yer almaktadır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "masa"
+    ]
+  },
+  {
+    "name": "COYA",
+    "reason": "Doğuş Grubu bünyesinde olduğu için boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "coya"
+    ]
+  },
+  {
+    "name": "Vogue",
+    "reason": "Doğuş Grubu’na ait restoranlardan biri olarak boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "vogue"
+    ]
+  },
+  {
+    "name": "Gina",
+    "reason": "Doğuş Grubu restoran zinciri içinde yer almaktadır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "gina"
+    ]
+  },
+  {
+    "name": "Fenix",
+    "reason": "CHP tarafından boykot edilen Doğuş Grubu restoranlarından biridir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "fenix"
+    ]
+  },
+  {
+    "name": "Kiva",
+    "reason": "Doğuş Grubu kapsamında boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "kiva"
+    ]
+  },
+  {
+    "name": "Mezzaluna",
+    "reason": "Doğuş Grubu restoranları listesinde yer almaktadır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "mezzaluna"
+    ]
+  },
+  {
+    "name": "Kebapçı Etiler",
+    "reason": "Doğuş Grubu restoranlarından biri olarak boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "KasapDöner",
+    "tags": [
+      "kebapçıetiler",
+      "kebapçı etiler"
+    ]
+  },
+  {
+    "name": "Saltbae",
+    "reason": "Doğuş Grubu’nun simge markalarından biri olarak boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "KasapDöner",
+    "tags": [
+      "nusr-et",
+      "nusret",
+      "saltbae",
+      "salt bae"
+    ]
+  },
+  {
+    "name": "Çubuklu 29",
+    "reason": "Doğuş Grubu bünyesindeki restoranlardan biridir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "çubuklu29",
+      "çubuklu 29"
+    ]
+  },
+  {
+    "name": "Oblix",
+    "reason": "Doğuş Grubu restoran zincirine bağlıdır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "oblix"
+    ]
+  },
+  {
+    "name": "ROKA",
+    "reason": "Doğuş Grubu’na ait restoran zinciri.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "roka"
+    ]
+  },
+  {
+    "name": "Sait",
+    "reason": "Doğuş Grubu ile ilişkilendirildiği için boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "sait"
+    ]
+  },
+  {
+    "name": "Papaioannou",
+    "reason": "Doğuş Grubu ile ortaklığı nedeniyle boykot edilmektedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "papaioannou"
+    ]
+  },
+  {
+    "name": "Bar Des Pres",
+    "reason": "Doğuş Grubu bünyesindedir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "bar des pres",
+      "bardespres"
+    ]
+  },
+  {
+    "name": "Amazónico",
+    "reason": "Doğuş Grubu restoranlarından biridir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "amazónico"
+    ]
+  },
+  {
+    "name": "Frankie",
+    "reason": "Doğuş Grubu’na ait restoranlardan biridir.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "frankie"
+    ]
+  },
+  {
+    "name": "Gattopardo",
+    "reason": "Doğuş Grubu kapsamında boykot edilen bir mekandır.",
+    "category": "restoran",
+    "alternative": "",
+    "tags": [
+      "gattopardo"
+    ]
+  },
+  {
+    "name": "CNN Türk",
+    "reason": "Tarafsız yayıncılık ilkesine aykırı yayın yaptığı gerekçesiyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Halk TV",
+    "tags": [
+      "cnn turk",
+      "cnntürk",
+      "cnn",
+      "cnnturk",
+      "cnn türk"
+    ]
+  },
+  {
+    "name": "TRT",
+    "reason": "Kamu yayıncısı olmasına rağmen taraflı yayın yaptığı gerekçesiyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "DW Türkçe",
+    "tags": [
+      "trt haber",
+      "trt"
+    ]
+  },
+  {
+    "name": "A Haber",
+    "reason": "Hükümete yakın yayınları nedeniyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Halk TV",
+    "tags": [
+      "a haber",
+      "ahaber"
+    ]
+  },
+  {
+    "name": "atv",
+    "reason": "Taraflı yayın yaptığı gerekçesiyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Sözcü TV",
+    "tags": [
+      "atv"
+    ]
+  },
+  {
+    "name": "Sabah",
+    "reason": "Hükümet yanlısı yayın politikası nedeniyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Cumhuriyet Gazetesi",
+    "tags": [
+      "sabah gazetesi",
+      "sabah"
+    ]
+  },
+  {
+    "name": "Kanal D",
+    "reason": "Demirören Grubu'na bağlı olduğu için boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "FOX TV",
+    "tags": [
+      "kanald",
+      "kanal d"
+    ]
+  },
+  {
+    "name": "Turkuvaz Medya Grubu",
+    "reason": "İktidara yakınlığı nedeniyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Bağımsız medya",
+    "tags": [
+      "turkuvazmedyagrubu",
+      "turkuvaz medya grubu"
+    ]
+  },
+  {
+    "name": "İHA",
+    "reason": "Taraflı habercilik yaptığı için boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "ANKA Ajansı",
+    "tags": [
+      "i̇ha"
+    ]
+  },
+  {
+    "name": "DHA",
+    "reason": "Demirören Haber Ajansı, hükümet yanlısı yayın yaptığı için boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Anka Haber",
+    "tags": [
+      "dha"
+    ]
+  },
+  {
+    "name": "Demirören",
+    "reason": "İktidara yakınlığı nedeniyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Bağımsız medya kaynakları",
+    "tags": [
+      "demirören"
+    ]
+  },
+  {
+    "name": "D&R",
+    "reason": "Demirören Grubu’na ait olması nedeniyle boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Kitapyurdu",
+    "tags": [
+      "d and r",
+      "d&r",
+      "dr"
+    ]
+  },
+  {
+    "name": "Idefix",
+    "reason": "Demirören’e ait olduğu için boykot edilmektedir.",
+    "category": "medya",
+    "alternative": "Babil",
+    "tags": [
+      "idefix",
+      "idefiks"
+    ]
+  },
+  {
+    "name": "Milli Piyango",
+    "reason": "Devlet destekli şans oyunu olması nedeniyle boykot edilmektedir.",
+    "category": "devlet",
+    "alternative": "Tombala yok, çalış kardeşim",
+    "tags": [
+      "milli piyango",
+      "piyango",
+      "mp",
+      "millipiyango"
+    ]
+  },
+  {
+    "name": "Misli.com",
+    "reason": "Kamu destekli bahis sistemi olduğu için boykot edilmektedir.",
+    "category": "devlet",
+    "alternative": "Canlı skor takip et yeter",
+    "tags": [
+      "misli.com",
+      "mislicom",
+      "misli"
+    ]
+  },
+  {
+    "name": "İddaa.com",
+    "reason": "Kamu destekli bahis şirketi olması nedeniyle boykot edilmektedir.",
+    "category": "devlet",
+    "alternative": "Kumar değil kitap",
+    "tags": [
+      "i̇ddaa.com",
+      "i̇ddaacom"
+    ]
+  },
+  {
+    "name": "ETS",
+    "reason": "CHP tarafından açıklanan listede yer aldığı için boykot edilmektedir.",
+    "category": "turizm",
+    "alternative": "Jolly Tur",
+    "tags": [
+      "ets tur",
+      "ets"
+    ]
+  }
+]
